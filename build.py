@@ -1,5 +1,3 @@
-# -*- coding:utf-8 -*-
-# Author : 我才是二亮 (unstring@163.com)
 import sys, os.path
 from FileParserClass import FileParser
 from MarkdownBuildClass import MarkDownBuild
@@ -14,14 +12,16 @@ if __name__ == '__main__':
         exit('请输入SQL文件路径')
 
     dir = sys.argv[1]
+    #dir = r'I:\WS-Noobud\kuro-dango\btt.sql'
+    print('Start parsing ', dir)
     try:
-        file = open(dir)
-    except IOError, e:
+        file = open(dir, 'r', encoding='UTF-8')
+    except IOError as e:
         exit(e)
     try:
         content = file.read()
-    except:
-        exit('文件读取失败')
+    except Exception as e:
+        exit(e)
     finally:
         file.close()
 
@@ -51,6 +51,6 @@ if __name__ == '__main__':
     finally:
         file_obj.close()
 
-    print '数据库文档已经成功创建,文件在md目录下.'
+    print('数据库文档已经成功创建,文件在md目录下.')
 
 

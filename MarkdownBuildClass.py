@@ -1,4 +1,3 @@
-# -*- coding:utf-8 -*-
 class MarkDownBuild:
 
     table_header = '|字段名称|字段类型|字段含义|\n|:---:|:---:|:---:|\n'
