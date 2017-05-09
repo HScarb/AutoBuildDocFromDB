@@ -11,8 +11,8 @@ if __name__ == '__main__':
     if (len(sys.argv) < 2):
         exit('请输入SQL文件路径')
 
-    dir = sys.argv[1]
-    #dir = r'I:\WS-Noobud\kuro-dango\btt.sql'
+    #dir = sys.argv[1]
+    dir = r'I:\WS-Noobud\kuro-dango\btt.sql'
     print('Start parsing ', dir)
     try:
         file = open(dir, 'r', encoding='UTF-8')

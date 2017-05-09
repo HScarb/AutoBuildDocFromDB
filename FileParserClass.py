@@ -9,7 +9,7 @@ class FileParser:
     # table_pattern = r'CREATE TABLE([\s\S]*?)LOCK TABLES'    #分离表
     table_pattern = r'CREATE TABLE([\s\S]*?);'
     name_pattern = r'.*?`(.*?)`.*?' # 获取表名称或字段名称
-    table_content_pattern = r'COMMENT=\'(.*?)\''   #获取表详情
+    table_content_pattern = r'COMMENT = \'(.*?)\''   #获取表详情
 
     def separatTable(self, content):
         '''将SQL文件中各个表分离开来
@@ -46,7 +46,7 @@ class FileParser:
                 tmp.append(name.group(1))
 
             # 从脏数据中取出表含义
-            content = re.match(self.table_content_pattern, dirty_table_content[i].split(' ')[-1])
+            content = re.match(self.table_content_pattern, dirty_table_content[i])
             if content != None:
                 tmp.append(content.group(1))
             else:
@@ -63,7 +63,7 @@ class FileParser:
         '''
         dirty_column_list = []
         for table in table_list:
-            dirty_column_list.append(table.split('\n')[1:-1])
+            dirty_column_list.append(table.split('\n')[1:])
         table_data = []
 
         for i in range(len(dirty_column_list)):
